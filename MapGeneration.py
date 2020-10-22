@@ -1,5 +1,4 @@
 import pygame
-from main import *
 
 
 class Map:
@@ -9,7 +8,8 @@ class Map:
     #           floor:0        wall:1        checked:2       start:3        end:4
     map = []
 
-    def __init__(self):
+    def __init__(self, width, height, screen):
+        self.screen = screen
         self.w = width // self.blockSize
         self.h = height // self.blockSize
         self.map = [[0 for i in range(self.h)] for j in range(self.w)]
@@ -17,8 +17,8 @@ class Map:
     def draw(self, x, y):
         rect = pygame.Rect(x * self.blockSize, y * self.blockSize,
                            self.blockSize, self.blockSize)
-        pygame.draw.rect(screen, self.colors[self.map[x][y]], rect)
-        pygame.draw.rect(screen, self.strip, rect, 1)
+        pygame.draw.rect(self.screen, self.colors[self.map[x][y]], rect)
+        pygame.draw.rect(self.screen, self.strip, rect, 1)
         # pygame.time.delay(500)
         pygame.display.update()
 
@@ -28,8 +28,8 @@ class Map:
                 # pygame.time.delay(1000)
                 rect = pygame.Rect(x * self.blockSize, y * self.blockSize,
                                    self.blockSize, self.blockSize)
-                pygame.draw.rect(screen, self.colors[self.map[x][y]], rect)
-                pygame.draw.rect(screen, self.strip, rect, 1)
+                pygame.draw.rect(self.screen, self.colors[self.map[x][y]], rect)
+                pygame.draw.rect(self.screen, self.strip, rect, 1)
                 # pygame.display.update()
 
     def mouse(self):

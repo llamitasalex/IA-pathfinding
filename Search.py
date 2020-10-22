@@ -1,8 +1,7 @@
-from main import map
 from States import State
 
 
-def search(algorithm, origin, solution):
+def search(algorithm, origin, solution, map):
     map.map[origin.x][origin.y] = 3
     map.draw(origin.x, origin.y)
     map.map[solution.final_state.x][solution.final_state.y] = 4
